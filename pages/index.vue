@@ -1,22 +1,48 @@
 <template>
-  <div class="container">
-    <h1 class="text-4xl text-teal-400">
-      tailwind
-    </h1>
+  <div class="application-main bg-main">
+    <aside class="left-column bg-white">
+      <AsideLeft />
+    </aside>
+    <div class="contents">
+      <main>
+        <RecentActivity />
+        <AllActivity />
+      </main>
+    </div>
+    <aside class="right-column">
+      <AsideRight />
+    </aside>
   </div>
 </template>
 
 <script>
-export default {}
+import AsideLeft from '~/components/organisms/index-aside-left'
+import AsideRight from '~/components/organisms/index-aside-right'
+import RecentActivity from '~/components/organisms/recent-activity'
+import AllActivity from '~/components/organisms/all-activity'
+
+export default {
+  components: {
+    AsideLeft,
+    AsideRight,
+    RecentActivity,
+    AllActivity
+  }
+}
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
+<style lang="postcss" scoped>
+.application-main {
   min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+}
+.left-column {
+  @apply max-w-aside w-1/4
+}
+.right-column {
+  @apply max-w-aside w-1/4
+}
+.contents {
+  @apply px-4 w-full mt-4 border-b
 }
 </style>
